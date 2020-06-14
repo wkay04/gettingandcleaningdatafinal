@@ -1,0 +1,83 @@
+---
+title: "Getting and Cleaning Data Final Project Codebook"
+author: "William Kay"
+date: "6/13/2020"
+output:
+  html_document:
+    keep_md: yes
+---
+
+
+
+<h3> Description of Output</h3>
+Description of the final_output.txt file is shown below. Variables are described in detail later in this document. 
+
+```{r echo= -1}
+data<- read.table("final_output.txt", header = TRUE)
+ncol(data)
+nrow(data)
+summary(data)
+variable.names(data)
+```
+
+<h3>DESCRIPTION OF VARIABLES</h3>
+
+<h4>subject_ID</h4>
+
+This variable is pulled directly from the original dataset. Each ID corresponds to a unique individual. Because a given individual will have completed multiple activities, these numbers repeat. 
+
+Information including the class, levels, and unit of measurement is described below. 
+
+```{r echo = -1}
+data<- read.table("final_output.txt", header = TRUE)
+class(data$subject_ID)
+unique(data$subject_ID)
+```
+
+There is no unit of measurement. Instead, each value represents a unique individual. 
+
+
+<h4> activity </h4>
+
+These lables are sourced from the activity_labels.txt file found in the original dataset and matched with the numeric id from the X_test.txt, Y_test.txt, X_train.txt, and Y_train.txt files. Each label represents a given activity carried out by the subject when measurments were taken. 
+
+Information including the class, levels, and unit of measurement is described below. 
+
+```{r echo = -1}
+data<- read.table("final_output.txt", header = TRUE)
+class(data$activity)
+unique(data$activity)
+```
+
+There is no unit of measurement. Instead, each value represents a unique activity. 
+
+<h4> variable </h4> 
+
+These variable names are sourced from the original dataset and each corresponds to a given gyroscopic measure associated with the smartphone for a given activity. Only the data representing a mean or standard deviation were retained. 
+
+The naming convention and more information can be found in the [features_info.txt](./UCI HAR Dataset/features_info.txt) file. 
+
+Information including the class, levels, and unit of measurement is described below. 
+
+```{r echo = -1}
+data<- read.table("final_output.txt", header = TRUE)
+class(data$variable)
+unique(data$variable)
+```
+
+There is no unit of measurement. Instead, each value represents a variable from the original dataset. 
+
+<h4> mean </h4>
+
+These values were computed by calculating the mean of variable values for a given subject and a given activity (that is to say, the mean of the mean and the mean of the standard deviation)
+
+Information including the class, levels, and unit of measurement is described below. 
+```{r echo = -1}
+data<- read.table("final_output.txt", header = TRUE)
+class(data$mean)
+summary(data$mean)
+```
+
+The unit of measurement is the original unit of measurement for the given variable. 
+
+For more information please consult the [readme](./readme.md)
